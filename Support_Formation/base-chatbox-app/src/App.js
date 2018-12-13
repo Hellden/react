@@ -30,7 +30,6 @@ class App extends Component {
   handleClick = () => console.log('Click')
 
   render () {
-<<<<<<< HEAD:project1/src/App.js
     const {famille} = this.state
     return (
       <div className='App'>
@@ -47,10 +46,6 @@ class App extends Component {
           <Button
             vieillir={this.handleClick}/>
       </div>
-=======
-    return (
-      <div className='box' />
->>>>>>> 82996a52dae226e5674a24eb5e6bfa033dac6f65:Support_Formation/base-chatbox-app/src/App.js
     )
   }
 }
