@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import './App.css'
+import Formulaire from './components/Formulaire'
 
 class App extends Component {
   render () {
     return (
       <div className='box'>
-        <h2>Titre</h2>
+        <div>
+          <div className='messages'>
+          Message
+          </div>
+        </div>
+        <Formulaire />
       </div>
     )
   }
