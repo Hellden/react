@@ -6,7 +6,7 @@ class App extends Component {
   state = {
     pseudo: this.props.match.params.pseudo
   }
-
+  
   render () {
     return (
       <div className='box'>
