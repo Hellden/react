@@ -6,11 +6,35 @@ import recettes from './recettes'
 import Admin from './components/Admin'
 import Card from './components/Card'
 
+// Firebase
+import base from './base'
+
+
 class App extends Component {
   state = {
     pseudo: this.props.match.params.pseudo,
     recettes: {}
   }
+
+  //Synchro Firebase.
+  componentDidMount () {
+    this.ref = base.syncState(`/${this.state.pseudo}/recettes`, {
+      context: this,
+      state: 'recettes'
+    })
+  }
+
+ajouterRecette = recette => {
+  const recettes = {... this.state.recettes }
+  recettes[`recette-${Date.now()}`] = recette
+  this.setState({recettes})
+}
+
+  //Déconnexion de la base pour éviter données persistente.
+  componentWillUnmount () {
+    base.removeBinding(this.ref)
+  }
+
   chargerExemple = () => this.setState({recettes})
 
   render () {
@@ -24,7 +48,9 @@ class App extends Component {
             { cards }
           </div>
         </div>
-        <Admin chargerExemple={this.chargerExemple} />
+        <Admin
+          ajouterRecette={this.ajouterRecette}
+          chargerExemple={this.chargerExemple} />
       </div>
     )
   }
